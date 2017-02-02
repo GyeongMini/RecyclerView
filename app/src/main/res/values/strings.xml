@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RecyclerViewTest</string>
+    <string name="sample_text">이것보소저것보소나도보소</string>
+</resources>
