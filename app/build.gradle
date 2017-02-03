@@ -25,8 +25,28 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:recyclerview-v7:24.2.1'
+    compile 'com.android.support:cardview-v7:24.2.1'
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:recyclerview-v7:24.1.0'
-    compile 'com.android.support:cardview-v7:24.1.0'
+    // ============================데이터 베이스 설정==============================
+    // 통계
+    compile 'com.google.firebase:firebase-core:10.0.1'
+    // 데이터 베이스
+    compile 'com.google.firebase:firebase-database:10.0.1'
+    // 인증
+    compile 'com.google.firebase:firebase-auth:10.0.1'
+    // 오류
+    compile 'com.google.firebase:firebase-crash:10.0.1'
+    // 저장소
+    compile 'com.google.firebase:firebase-storage:10.0.1'
+    // ==========================================================================
+
+
+
+
+
+
+    compile 'com.android.support:design:24.2.1'
 
 }
+apply plugin: 'com.google.gms.google-services'

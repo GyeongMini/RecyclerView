@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.tacademy.recyclerviewtest.model.ChatMessage;
+
 /**
  * Created by Tacademy on 2017-02-02.
  */
@@ -40,5 +42,18 @@ public class PostHolder extends RecyclerView.ViewHolder {
             txt_left.setText(text);
         }
     }
+
+    public void bindOnPost(ChatMessage msg, int type){
+        if( type == 1 ){ // me
+            right_container.setVisibility(View.VISIBLE);
+            left_container.setVisibility(View.GONE);
+            txt_right.setText(msg.getMessage());
+        }else{ // you
+            left_container.setVisibility(View.VISIBLE);
+            right_container.setVisibility(View.GONE);
+            txt_left.setText(msg.getMessage());
+        }
+    }
+
 
 }
