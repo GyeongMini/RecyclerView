@@ -54,6 +54,4 @@ public class PostHolder extends RecyclerView.ViewHolder {
             txt_left.setText(msg.getMessage());
         }
     }
-
-
 }

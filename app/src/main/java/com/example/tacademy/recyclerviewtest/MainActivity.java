@@ -178,7 +178,6 @@ public class MainActivity extends AppCompatActivity {
         InputMethodManager methodManager =
                 (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         methodManager.hideSoftInputFromWindow(editText.getWindowToken(), 0);
-
     }
 
     // 아답터

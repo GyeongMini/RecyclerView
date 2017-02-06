@@ -34,9 +34,7 @@ public class Main3Activity extends AppCompatActivity {
                     "4 반면 최하위였던 헐시티 역시 승점 1점을 추가, 4승5무14패(승점 17점)를 올리며 선더랜드(승점 16점)를 20위로 내려앉히고 19위로 올라섰다.",
                     "5 이날 맨유는 즐라탄 이브라히모비치와 래쉬포드, 포그바를 비롯해 에레라, 므키타리안, 발렌시아, 캐릭, 브린트, 로호, 필 존스, 데헤아 골키퍼를 선발로 내세웠다. 이에 맞서 헐시티는 니아세와 마르코비치, 메일러, 에반드로 등이 선발 출전했다."
             };
-
     int index[] = new int[1000];
-
 
     MyAdapter myAdapter = new MyAdapter();
     LinearLayoutManager linearLayoutManager;
