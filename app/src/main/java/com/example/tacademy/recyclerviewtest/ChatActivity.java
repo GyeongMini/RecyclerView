@@ -32,7 +32,8 @@ public class ChatActivity extends AppCompatActivity {
         // 2. database access할 수 있는 참조값(root) 획득
         databaseReference = firebaseDatabase.getReference();
         // 3. insert 적절한 경로( 가지를 하나 만들어서 )에다 메시지 입력
-//        databaseReference.child("chat").push().setValue(new ChatMessage("삼다수","하이"))
+//        databaseReference.child("chat").push()
+//                .setValue(new ChatMessage("삼다수","하이"))
 //                .addOnCompleteListener(new OnCompleteListener<Void>() {
 //                    @Override
 //                    public void onComplete(@NonNull Task<Void> task) {

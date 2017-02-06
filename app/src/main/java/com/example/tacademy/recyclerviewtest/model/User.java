@@ -8,8 +8,7 @@ public class User {
     String id;
     String email;
 
-
-    public void User (){
+    public User (){
 
     }
 

@@ -1,6 +1,7 @@
 package com.example.tacademy.recyclerviewtest;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.tacademy.recyclerviewtest.db.StorageHelper;
 import com.example.tacademy.recyclerviewtest.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -16,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends BaseActivity {
+
     EditText email_et, password_et;
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
@@ -29,6 +32,16 @@ public class SignUpActivity extends BaseActivity {
         password_et = (EditText) findViewById(R.id.password_et);
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
+        // 자동 로그인 처리
+        String email =
+                StorageHelper.getInstance().getString(SignUpActivity.this,"email");
+        String pwd =
+                StorageHelper.getInstance().getString(SignUpActivity.this,"password");
+        if( email != null && pwd != null && !email.equals("") && !pwd.equals("") ){
+            email_et.setText(email);
+            password_et.setText(pwd);
+            onLogin(null);
+        }
     }
 
     public void onSignup(View view) {
@@ -61,9 +74,10 @@ public class SignUpActivity extends BaseActivity {
 
         // 1. 로딩
         showProgress("로그인중...");
+
         // 2. 이메일 비번 획득
         final String email = email_et.getText().toString();
-        String pwd = password_et.getText().toString();
+        final String pwd = password_et.getText().toString();
         // 3. 인증 쪽에 데이터 입력
         firebaseAuth.signInWithEmailAndPassword(email , pwd)
                 .addOnCompleteListener(new OnCompleteListener() {
@@ -73,6 +87,11 @@ public class SignUpActivity extends BaseActivity {
                         hideProgress();
                         if(task.isSuccessful() ){
                             Log.i("CHAT","성공");
+                            // 서비스로 이동
+                            // 저장하는곳( 앱이 구동 되면 다시 뽑아야 한다. )
+                            StorageHelper.getInstance().setString(SignUpActivity.this,"email",email);
+                            StorageHelper.getInstance().setString(SignUpActivity.this,"password",pwd);
+                            goCenter();
                         }else{
                             //실패
                             Log.i("CHAT","실패"+task.getException());
@@ -80,6 +99,12 @@ public class SignUpActivity extends BaseActivity {
                     }
                 });
 
+    }
+
+    public void goCenter(){
+        Intent intent = new Intent(this, CenterActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public boolean isValidate() {
@@ -115,7 +140,8 @@ public class SignUpActivity extends BaseActivity {
         // 회원 정보 생성
         User user = new User(id, email);
         // 디비 입력
-        databaseReference.child("users").child(id).setValue(user)
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        databaseReference.child("users").child(uid).setValue(user)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
