@@ -127,9 +127,7 @@ public class NewPostActivity extends BaseActivity {
 
             }
         });
-
     }
-
     // 입력을 못하게 막아야 하는 함수를 빼서 만듬!!
     public void setEditable(boolean flag) {
         title.setEnabled(flag);

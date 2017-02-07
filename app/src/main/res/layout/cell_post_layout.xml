@@ -48,7 +48,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                app:srcCompat="@android:drawable/star_on"
+                app:srcCompat="@drawable/star_off"
                 android:id="@+id/star"
                 android:layout_weight="1" />
 

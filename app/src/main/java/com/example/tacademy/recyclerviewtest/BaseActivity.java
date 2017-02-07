@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +45,13 @@ public class BaseActivity extends AppCompatActivity {
         // 닫는다 : 객체가 존재하고, 보일때만
         if ( pd != null && pd.isShowing() ){
         pd.dismiss();
+        }
     }
+    // 나의 아이디
+    // 로그인 이후에만 사용 하면된다
+    public String getUid(){
+        return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
-
 }
 
 

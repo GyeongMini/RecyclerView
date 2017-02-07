@@ -62,6 +62,7 @@ public class SignUpActivity extends BaseActivity {
                             // 4-1. 회원 정보를 디비에 입력
                             onUserSaved(email);
                             // 5. 로그인 처리로 이동
+                            Log.i("로그","성공"+task.getException());
 
                         }else{
                         }

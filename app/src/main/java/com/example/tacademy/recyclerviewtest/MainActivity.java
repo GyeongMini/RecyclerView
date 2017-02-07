@@ -118,8 +118,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerview.setLayoutManager(linearLayoutManager);
 
         // 고정 크기 그리드
-        gridLayoutManager = new GridLayoutManager(this, 2);
-        gridLayoutManager.setOrientation(OrientationHelper.VERTICAL);
+            gridLayoutManager = new GridLayoutManager(this, 2);
+            gridLayoutManager.setOrientation(OrientationHelper.VERTICAL);
 //        recyclerview.setLayoutManager(gridLayoutManager);
 
         //가변 그리드
